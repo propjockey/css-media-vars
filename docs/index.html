@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>css-media-vars from PropJockey</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/css-media-vars/css-media-vars.css">
+    <style>
+      html {
+        font-size: 16px;
+        overflow-x: hidden;
+      }
+      * {
+        box-sizing: border-box;
+        font-family: sans-serif;
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        --sm-gutter: var(--media-lte-sm) 1rem;
+        --md-gutter: var(--media-md) 7.5rem;
+        --lg-gutter: var(--media-lg) 15rem;
+        --xl-gutter: var(--media-xl) 20%;
+        --gutter: var(--sm-gutter, var(--md-gutter, var(--lg-gutter, var(--xl-gutter))));
+        padding: 2rem calc(var(--gutter) + 1rem);
+        --rgs: top left / auto 25rem no-repeat;
+        background: linear-gradient(
+          to right,
+          rgba(32, 8, 48, 0.66) 0px,
+          rgba(32, 8, 48, 0.66) calc(var(--gutter) - 2rem),
+          rgba(32, 8, 48, 0.87) var(--gutter),
+          rgba(255, 255, 255, 0.125) var(--gutter),
+          rgba(255, 255, 255, 0.125) calc(100% - var(--gutter)),
+          rgba(32, 8, 48, 0.87) calc(100% - var(--gutter)),
+          rgba(32, 8, 48, 0.66) calc(100% - var(--gutter) + 2rem),
+          rgba(32, 8, 48, 0.66) 100%
+        ),
+        radial-gradient(200% 35rem at left top, hsla(303, 96%, 50%, 0.75), hsla(303, 96%, 50%, 0.75), transparent 100rem) var(--rgs),
+        radial-gradient(200% 35rem at right top, hsla(264, 96%, 50%, 0.66), hsla(264, 96%, 50%, 0.66), transparent 100rem) var(--rgs),
+        linear-gradient(
+          to right,
+          transparent var(--gutter),
+          rgba(255, 255, 255, 1) var(--gutter),
+          rgba(255, 255, 255, 1) calc(100% - var(--gutter)),
+          transparent calc(100% - var(--gutter))
+        ),
+        repeating-linear-gradient(to top left, rgba(0, 0, 0, 0.125), transparent 1rem),
+        repeating-linear-gradient(to top right, rgba(255, 64, 255, 0.125), transparent 1rem);
+      }
+      header,
+      article {
+        position: relative;
+        margin-bottom: 2rem;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 0.5rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+      article {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1) 7rem);
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 1rem;
+      }
+      .anchor {
+        position: absolute;
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1rem;
+        top: 0.75rem;
+        left: -0.75rem;
+      }
+      header {
+        font-size: 1.25rem;
+      }
+      h1 {
+        color: white;
+        font-size: 2rem;
+        text-shadow: 0px 0px 1px black;
+        padding-bottom: 0.25rem;
+      }
+      header a {
+        color: black;
+      }
+      code {
+        background: #f0f0f4;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0.125rem;
+      }
+      img {
+        margin: 0.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header augmented-ui="t-clip-x br-clip exe">
+      <a class="anchor" id="top" href="#top" style="top: 0.87rem;">#</a><h1>css-media-vars Documentation&nbsp;&amp;&nbsp;Demos</h1>
+      <p>
+        <dfn>css-media-vars</dfn>
+        A brand new way to write responsive CSS. Named breakpoints, DRY selectors, no scripts, no builds, vanilla CSS.
+      </p>
+      <br>
+      <section>
+        <b>Resources:</b><br>
+        <a href="https://propjockey.github.io/css-media-vars/">Docs+Demos</a> |
+        <a href="https://www.npmjs.com/package/css-media-vars">NPM</a> |
+        <a href="https://github.com/propjockey/css-media-vars">GitHub</a> |
+        <a href="https://twitter.com/James0x57">Twitter</a>
+      </section>
+    </header>
+
+    <article>
+      <a class="anchor" id="install" href="#install">#</a><h2>Installing css-media-vars</h2><br>
+      <p>
+        Install with NPM:<br>
+        <code>$ npm install css-media-vars</code><br>
+        Then include the <code>/node_modules/css-media-vars/css-media-vars.css</code> file once, before any stylesheets that use it.<br>
+        <br>
+        OR<br>
+        <br>
+        Use your favorite NPM CDN and include it on your page before other stylesheets for small projects. Like so:<br>
+        <code>&lt;link rel="stylesheet" type="text/css" href="https://unpkg.com/css-media-vars/css-media-vars.css"&gt;</code>
+      </p>
+    </article>
+
+    <article>
+      <a class="anchor" id="basics" href="#basics">#</a><h2>Basics of css-media-vars</h2><br>
+      <p>
+        css-media-vars adds several --custom-css-variables, all namespaced with "--media-" and based on media queries, onto the HTML tag. These vars act as universal mixins for your CSS values. If the media query is true, your value will be used. If it's false, the var(..., fallback) will be used.<br>
+        <br>
+        For example, there are several named breakpoints that respond to the width of the screen, such as <code>--media-lte-sm</code>.<br>
+        <br>
+        In your CSS, if you want a value to only apply when the screen is less than or equal to the "small" breakpoint range, you mix it into your value:<br>
+        <code>--my-small-value: var(--media-lte-sm) 2px;</code><br>
+        From this point, you can use your variable anywhere and it will only be "2px" if the media query is true. Else, it uses the fallback you provide, like so:<br>
+        <code>border: var(--my-small-value, 15px) solid green;</code><br>
+        <img src="./suchborder.gif" alt="Border changing size at 900px breakpoint"><br>
+        Here's a link to the jsbin pictured in the gif: <a href="https://jsbin.com/giqedowale/edit?css,output">https://jsbin.com/giqedowale/edit?css,output</a><br>
+        <br>
+        If you need multiple break points, all you have to do is mix a different breakpoint into another variable and use it in the first fallback:<br>
+        <code>
+          --my-small-value: var(--media-lte-sm) 2px;<br>
+          --my-medium-value: var(--media-md) 15px;<br>
+          border: var(--my-small-value, var(--my-medium-value, 30px)) solid green;<br>
+        </code><br>
+        In this case, because the small values are listed first, this approach is <b>mobile-first</b>! CSS Variables don't compile the fallback unless it's used (similar to the expected short-circuting of conditionals in JavaScript).<br>
+        <br>
+        This is all vanilla CSS. No JS or build step is necessary.<br>
+        The library is small and built on a CSS trick called "Space Toggle" discovered in the development of <a href="http://augmented-ui.com/">augmented-ui</a>. You can read more about Space Toggle in these tweets which contain links to JSBins you can explore further with:<br>
+        <a href="https://twitter.com/James0x57/status/1283596399196680192">Second Tweet, a simple demo</a><br>
+        <a href="https://twitter.com/James0x57/status/1282303255826046977">First Tweet, an advanced demo</a><br>
+        <br>
+        Browser support for CSS Variables is currently 94% globally according to <a href="https://caniuse.com/#feat=css-variables">caniuse</a>.<br>
+        Each of the --media-* vars are using the actual media query in CSS to switch them to the "true" state. Browser support depends on the feature but will always behave as if it's "false" if the media query isn't supported in the user's browser, such as <code>--media-prefers-light</code> which only recently gained traction.
+      </p>
+    </article>
+    
+    <article>
+      <a class="anchor" id="breakpoints" href="#breakpoints">#</a><h2>Named Breakpoints in css-media-vars</h2><br>
+      <h3>Available Breakpoints</h3>
+      <p style="padding-left: 0.5rem;">
+        xs = 0px to 600px, (0em+)<br>
+        sm = 600px to 900px, (37.5em+)<br>
+        md = 900px to 1200px, (56.25em+)<br>
+        lg = 1200px to 1800px, (75em+)<br>
+        xl = 1800px and up, (112.5em+)<br>
+        Why these breakpoints? <a href="https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/">https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/</a><br>
+        Why are they implemented as em units? <a href="https://zellwk.com/blog/media-query-units/">https://zellwk.com/blog/media-query-units/</a><br>
+        <br>
+        Media vars available for these breakpoints:<br>
+        <b>--media-xs</b> (only extra small)<br>
+        <b>--media-sm</b> (only small)<br>
+        <b>--media-md</b> (only medium)<br>
+        <b>--media-lg</b> (only large)<br>
+        <b>--media-xl</b> (only extra large)<br>
+        gte (greater than or equal)<br>
+        <b>--media-gte-sm</b> (small and up)<br>
+        <b>--media-gte-md</b> (medium and up)<br>
+        <b>--media-gte-lg</b> (large and up)<br>
+        lte (less than or equal)<br>
+        <b>--media-lte-sm</b> (small and down)<br>
+        <b>--media-lte-md</b> (medium and down)<br>
+        <b>--media-lte-lg</b> (large and down)<br>
+        sets<br>
+        <b>--media-sm-md</b> (small and medium only)<br>
+        <b>--media-sm-md-lg</b> (small, medium, and large only)<br>
+        <b>--media-md-lg</b> (medium and large only)<br>
+        <br>
+      </p>
+
+      <h3>Breakpoint Demo</h3>
+      <style style="display: block; white-space: pre;" contenteditable="true">
+        .breakpoints-demo {
+          display: flex; flex-wrap: wrap; justify-content: space-around;
+        }
+        .breakpoints-demo > * {
+          --xs-width: var(--media-xs) 100%;
+          --sm-width: var(--media-sm) 49%;
+          --md-width: var(--media-md) 32%;
+          --lg-width: var(--media-gte-lg) 24%;
+          width: var(--xs-width, var(--sm-width, var(--md-width, var(--lg-width))));
+
+          --sm-and-down-bg: var(--media-lte-sm) red;
+          --md-and-up-bg: var(--media-gte-md) green;
+          background: var(--sm-and-down-bg, var(--md-and-up-bg));
+          /* implemented mobile-first, but you could reverse them if you wanted to */
+          /* background: var(--md-and-up-bg, var(--sm-and-down-bg)); */
+
+          margin-top: 10px; padding: 5px; color: white; height: 35px; text-align: center;
+        }
+      </style>
+      <b>.breakpoints-demo</b><br>
+      <div class="breakpoints-demo">
+        <div>Follow</div>
+        <div>me</div>
+        <div>on</div>
+        <div>Twitter</div>
+        <div>@James0x57</div>
+      </div>
+    </article>
+
+    <article>
+      <a class="anchor" id="print" href="#print">#</a><h2>Print, Screen, and Speech</h2><br>
+      <p>
+        <b>--media-print</b><br>
+        <b>--media-screen</b><br>
+        <b>--media-speech</b><br>
+      </p>
+      <div>
+        <style style="display: block; white-space: pre;" contenteditable="true">
+          .media-print-demo {
+            --bg-if-printing: var(--media-print) none;
+            --color-if-printing: var(--media-print) red;
+            background: var(--bg-if-printing, black);
+            color: var(--color-if-printing, white);
+
+            margin: 10px; padding: 10px; width: 100px;
+          }
+        </style>
+        <b>.media-print-demo:</b><br>
+        <div class="media-print-demo">Preview Print!</div>
+      </div>
+    </article>
+
+    <article>
+      <a class="anchor" id="other-media-vars" href="#other-media-vars">#</a><h2>Other Implemented Media Vars</h2><br>
+      <p>
+        <b>--media-landscape</b><br>
+        <b>--media-portrait</b><br>
+        <b>--media-prefers-light</b><br>
+        <b>--media-prefers-dark</b><br>
+        <b>--media-prefers-reduced-motion</b><br>
+        <b>--media-any-hover-hover</b><br>
+        <b>--media-any-hover-none</b><br>
+        <b>--media-any-pointer-coarse</b><br>
+        <b>--media-any-pointer-fine</b><br>
+        <b>--media-any-pointer-none</b><br>
+        <b>--media-hover-hover</b><br>
+        <b>--media-hover-none</b><br>
+        <b>--media-pointer-coarse</b><br>
+        <b>--media-pointer-fine</b><br>
+        <b>--media-pointer-none</b><br>
+      </p>
+    </article>
+
+    <article>
+      <a class="anchor" id="combine" href="#combine">#</a><h2>Combine media queries</h2><br>
+      <p>
+        combine using AND logic:<br>
+        <code>--gray-if-prefers-dark-and-is-printing: var(--media-prefers-dark) var(--media-print) gray;</code><br>
+        <br>
+        combine using OR logic:<br>
+        <code>--gray-if-prefers-dark-or-is-printing: var(--media-prefers-dark, var(--media-print)) gray;</code><br>
+        <br>
+        If the condition applies to multiple properties, you can create compound conditions and use them in multiple places:<br>
+        <code>
+          --prefers-dark-and-is-printing: var(--media-prefers-dark) var(--media-print);<br>
+          --my-query-bg-color: var(--prefers-dark-and-is-printing) gray;<br>
+          --my-query-border-size: var(--prefers-dark-and-is-printing) 2px;<br>
+          background: var(--my-query-bg-color, black);<br>
+          border: var(--my-query-border-size, 10px) solid black;
+        </code>
+      </p>
+    </article>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    Feel free to reach out on github or twitter with feedback, requests, or for help getting started!<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="https://twitter.com/James0x57">follow me on twitter for updates and other web stuff</a><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>
