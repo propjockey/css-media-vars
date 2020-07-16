@@ -1,0 +1,174 @@
+/**
+ * css-media-vars
+ * BSD 2-Clause License
+ * Copyright (c) James0x57, PropJockey, 2020
+ */
+
+html {
+  --media-print: initial;
+  --media-screen: initial;
+  --media-speech: initial;
+  --media-xs: initial;
+  --media-sm: initial;
+  --media-md: initial;
+  --media-lg: initial;
+  --media-xl: initial;
+  --media-gte-sm: initial;
+  --media-gte-md: initial;
+  --media-gte-lg: initial;
+  --media-lte-sm: initial;
+  --media-lte-md: initial;
+  --media-lte-lg: initial;
+  --media-sm-md: initial;
+  --media-sm-md-lg: initial;
+  --media-md-lg: initial;
+  --media-landscape: initial;
+  --media-portrait: initial;
+  --media-prefers-light: initial;
+  --media-prefers-dark: initial;
+  --media-prefers-reduced-motion: initial;
+  --media-any-hover-hover: initial;
+  --media-any-hover-none: initial;
+  --media-any-pointer-coarse: initial;
+  --media-any-pointer-fine: initial;
+  --media-any-pointer-none: initial;
+  --media-hover-hover: initial;
+  --media-hover-none: initial;
+  --media-pointer-coarse: initial;
+  --media-pointer-fine: initial;
+  --media-pointer-none: initial;
+}
+@media print {
+  html { --media-print: ; }
+}
+@media screen {
+  html { --media-screen: ; }
+}
+@media speech {
+  html { --media-speech: ; }
+}
+@media (max-width: 37.499em) {
+  html {
+    --media-xs: ;
+    --media-lte-sm: ;
+    --media-lte-md: ;
+    --media-lte-lg: ;
+  }
+}
+@media (min-width: 37.5em) and (max-width: 56.249em) {
+  html {
+    --media-sm: ;
+    --media-gte-sm: ;
+    --media-lte-sm: ;
+    --media-lte-md: ;
+    --media-lte-lg: ;
+    --media-sm-md: ;
+    --media-sm-md-lg: ;
+  }
+}
+@media (min-width: 56.25em) and (max-width: 74.99em) {
+  html {
+    --media-md: ;
+    --media-gte-sm: ;
+    --media-gte-md: ;
+    --media-lte-md: ;
+    --media-lte-lg: ;
+    --media-sm-md: ;
+    --media-sm-md-lg: ;
+    --media-md-lg: ;
+  }
+}
+@media (min-width: 75em) and (max-width: 112.499em) {
+  html {
+    --media-lg: ;
+    --media-gte-sm: ;
+    --media-gte-md: ;
+    --media-gte-lg: ;
+    --media-lte-lg: ;
+    --media-sm-md-lg: ;
+    --media-md-lg: ;
+  }
+}
+@media (min-width: 112.5em) {
+  html {
+    --media-xl: ;
+    --media-gte-sm: ;
+    --media-gte-md: ;
+    --media-gte-lg: ;
+  }
+}
+@media (prefers-color-scheme: light) {
+  html {
+    --media-prefers-light: ;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    --media-prefers-dark: ;
+  }
+}
+@media (any-hover: hover) {
+  html {
+    --media-any-hover-hover: ;
+  }
+}
+@media (any-hover: none) {
+  html {
+    --media-any-hover-none: ;
+  }
+}
+@media (any-pointer: coarse) {
+  html {
+    --media-any-pointer-coarse: ;
+  }
+}
+@media (any-pointer: fine) {
+  html {
+    --media-any-pointer-fine: ;
+  }
+}
+@media (any-pointer: none) {
+  html {
+    --media-any-pointer-none: ;
+  }
+}
+@media (hover: hover) {
+  html {
+    --media-hover-hover: ;
+  }
+}
+@media (hover: none) {
+  html {
+    --media-hover-none: ;
+  }
+}
+@media (pointer: coarse) {
+  html {
+    --media-pointer-coarse: ;
+  }
+}
+@media (pointer: fine) {
+  html {
+    --media-pointer-fine: ;
+  }
+}
+@media (pointer: none) {
+  html {
+    --media-pointer-none: ;
+  }
+}
+@media (prefers-reduced-motion) {
+  html {
+    --media-prefers-reduced-motion: ;
+  }
+}
+@media (orientation: landscape) {
+  html {
+    --media-landscape: ;
+  }
+}
+@media (orientation: portrait) {
+  html {
+    --media-portrait: ;
+  }
+}

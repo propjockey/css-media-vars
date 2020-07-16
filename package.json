@@ -1,0 +1,24 @@
+{
+  "name": "css-media-vars",
+  "version": "1.0.0",
+  "description": "A brand new way to write responsive CSS. Named breakpoints, DRY selectors, no scripts, no builds, vanilla CSS.",
+  "main": "css-media-vars.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/propjockey/css-media-vars.git"
+  },
+  "keywords": [
+    "css",
+    "breakpoints",
+    "media queries"
+  ],
+  "author": "James0x57",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/propjockey/css-media-vars/issues"
+  },
+  "homepage": "https://github.com/propjockey/css-media-vars#readme"
+}
