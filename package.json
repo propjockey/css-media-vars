@@ -1,6 +1,6 @@
 {
   "name": "css-media-vars",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A brand new way to write responsive CSS. Named breakpoints, DRY selectors, no scripts, no builds, vanilla CSS.",
   "main": "css-media-vars.css",
   "scripts": {

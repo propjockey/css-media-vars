@@ -5,9 +5,13 @@ A brand new way to write responsive CSS. Named breakpoints, DRY selectors, no sc
 
 Docs+Demos at: https://propjockey.github.io/css-media-vars/
 
+NPM: https://www.npmjs.com/package/css-media-vars
+
+GitHub: https://github.com/propjockey/css-media-vars
+
 Install:
-`$ npm install augmented-ui`
-Then include the `/node_modules/augmented-ui/augmented.css` file before any stylesheets that use it.
+`$ npm install css-media-vars`
+Then include the `/node_modules/css-media-vars/css-media-vars.css` file before any stylesheets that use it.
 
 OR
 
