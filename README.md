@@ -20,7 +20,7 @@ Use your favorite NPM CDN and include it on your page before other stylesheets f
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/css-media-vars/css-media-vars.css">
 ```
 
-## Example of what the CSS looks like
+## Example of what your mobile-first CSS would look like
 ```css
   .breakpoints-demo > * {
     --xs-width: var(--media-xs) 100%;
@@ -34,6 +34,36 @@ Use your favorite NPM CDN and include it on your page before other stylesheets f
     background: var(--sm-and-down-bg, var(--md-and-up-bg));
   }
 ```
+
+VS Writing this same basic responsive CSS in the traditional way:
+```css
+  .breakpoints-demo > * {
+    width: 100%;
+    background: red;
+  }
+  @media (min-width: 37.5em) and (max-width: 56.249em) {
+    .breakpoints-demo > * {
+      width: 49%;
+    }
+  }
+  @media (min-width: 56.25em) and (max-width: 74.99em) {
+    .breakpoints-demo > * {
+      width: 32%;
+    }
+  }
+  @media (min-width: 56.25em) {
+    .breakpoints-demo > * {
+      background: green;
+    }
+  }
+  @media (min-width: 75em) {
+    .breakpoints-demo > * {
+      width: 24%;
+    }
+  }
+```
+
+css-media-vars let you write responsive, vanilla, CSS with named breakpoints, DRY selectors, and easier to mantain code.
 
 ### Minification
 Enviornments that force minification with PostCSS and cssnano (or other CSS minifiers) may produce invalid CSS by striping the space from a `--custom-var: ;` assignment. To avoid this with **Create React App**, copy `css-media-vars.css` into the public folder and manually include it in the index.html file to avoid the minification until they're fixed.
