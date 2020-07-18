@@ -15,7 +15,9 @@
     </script>
     <style>
       html {
-        font-size: 16px;
+        --xs-fs: var(--media-xs) 10px;
+        --sm-fs: var(--media-sm) 13px;
+        font-size: var(--xs-fs, var(--sm-fs, 16px));
         overflow-x: hidden;
       }
       * {
@@ -144,7 +146,7 @@
         <code>--my-small-value: var(--media-lte-sm) 2px;</code><br>
         From this point, you can use your variable anywhere and it will only be "2px" if the media query is true. Else, it uses the fallback you provide, like so:<br>
         <code>border: var(--my-small-value, 15px) solid green;</code><br>
-        <img src="./suchborder.gif" alt="Border changing size at 900px breakpoint"><br>
+        <img src="./suchborder.gif" alt="Border changing size at 900px breakpoint" style="max-width: 100%;"><br>
         Here's a link to the jsbin pictured in the gif: <a href="https://jsbin.com/giqedowale/edit?css,output">https://jsbin.com/giqedowale/edit?css,output</a><br>
         <br>
         If you need multiple break points, all you have to do is mix a different breakpoint into another variable and use it in the first fallback:<br>
