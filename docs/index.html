@@ -169,7 +169,7 @@
     
     <article>
       <a class="anchor" id="breakpoints" href="#breakpoints">#</a><h2>Named Breakpoints in css-media-vars</h2><br>
-      <h3>Available Breakpoints</h3>
+      <h3>Available Breakpoint Ranges</h3>
       <p style="padding-left: 0.5rem;">
         xs = 0px to 600px, (0em+)<br>
         sm = 600px to 900px, (37.5em+)<br>
@@ -179,25 +179,27 @@
         Why these breakpoints? <a href="https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/">https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/</a><br>
         Why are they implemented as em units? <a href="https://zellwk.com/blog/media-query-units/">https://zellwk.com/blog/media-query-units/</a><br>
         <br>
-        Media vars available for these breakpoints:<br>
-        <b>--media-xs</b> (only extra small)<br>
-        <b>--media-sm</b> (only small)<br>
-        <b>--media-md</b> (only medium)<br>
-        <b>--media-lg</b> (only large)<br>
-        <b>--media-xl</b> (only extra large)<br>
+        Media vars available for these breakpoint ranges:<br>
+        <b>--media-xs</b> (only extra small: everything below 600px)<br>
+        <b>--media-sm</b> (only small: between 600px and 900px)<br>
+        <b>--media-md</b> (only medium: between 900px and 1200px)<br>
+        <b>--media-lg</b> (only large: 1200px to 1800px)<br>
+        <b>--media-xl</b> (only extra large: 1800px and above)<br>
         gte (greater than or equal)<br>
-        <b>--media-gte-sm</b> (small and up)<br>
-        <b>--media-gte-md</b> (medium and up)<br>
-        <b>--media-gte-lg</b> (large and up)<br>
+        <b>--media-gte-sm</b> (small and up: 600px and above)<br>
+        <b>--media-gte-md</b> (medium and up: 900px and above)<br>
+        <b>--media-gte-lg</b> (large and up: 1200px and above)<br>
         lte (less than or equal)<br>
-        <b>--media-lte-sm</b> (small and down)<br>
-        <b>--media-lte-md</b> (medium and down)<br>
-        <b>--media-lte-lg</b> (large and down)<br>
+        <b>--media-lte-sm</b> (small and down: everything below 900px)<br>
+        <b>--media-lte-md</b> (medium and down: everything below 1200px)<br>
+        <b>--media-lte-lg</b> (large and down: everything below 1800px)<br>
         sets<br>
-        <b>--media-sm-md</b> (small and medium only)<br>
-        <b>--media-sm-md-lg</b> (small, medium, and large only)<br>
-        <b>--media-md-lg</b> (medium and large only)<br>
+        <b>--media-sm-md</b> (small and medium only: between 600px and 1200px)<br>
+        <b>--media-sm-md-lg</b> (small, medium, and large only: between 600px and 1800px)<br>
+        <b>--media-md-lg</b> (medium and large only: between 900px and 1800px)<br>
         <br>
+        Here is a visual guide to see the ranges and how they work together more easily:<br>
+        <a href="./breakpoints.png"><img src="./breakpoints.png" alt="Visualization for breakpoint ranges" style="max-width: 100%;"></a><br>
       </p>
 
       <h3>Breakpoint Demo</h3>
