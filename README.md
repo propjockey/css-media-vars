@@ -65,12 +65,35 @@ VS Writing this same basic responsive CSS in the traditional way:
 
 css-media-vars let you write responsive, vanilla, CSS with named breakpoints, DRY selectors, and easier to mantain code.
 
+## New in v1.1.0
+Write CSS that responds to the browser's support of @property from Houdini:
+```css
+  .warning-at-property-unsupported {
+    --display-block-if-unsupported: var(--media-at-property-unsupported) block;
+    display: var(--display-block-if-unsupported, none); /* display: none if @property is supported */
+  }
+  .congrats-at-property-supported {
+    --display-none-if-unsupported: var(--media-at-property-unsupported) none;
+    display: var(--display-none-if-unsupported, block); /* display: block if @property is supported */
+  }
+  :root {
+    --at-prop-unsupported-color: var(--media-at-property-unsupported) red;
+    --at-prop-color: var(--at-prop-unsupported-color, green);
+    /* var(--at-prop-color) will return: */
+    /* red if @property is unsupported */
+    /* green if @property is supported */
+  }
+```
+
 ### Minification
 Environments that force minification with PostCSS and cssnano (or other CSS minifiers) may produce invalid CSS by striping the space from a `--custom-var: ;` assignment. To avoid this with **Create React App**, copy `css-media-vars.css` into the public folder and manually include it in the index.html file to avoid the minification until they're fixed.
 
 You can read more about using the public folder here: https://create-react-app.dev/docs/using-the-public-folder/
 
 ## CHANGELOG:
+
+v1.1.0 - June 27th, 2021:
+* added `--media-at-property-unsupported` space toggle that detects CSS @property support
 
 v1.0.0 - July 16th, 2020:
 * Initial release

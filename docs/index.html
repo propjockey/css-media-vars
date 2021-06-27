@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>css-media-vars from PropJockey</title>
+    <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/css-media-vars/css-media-vars.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146833088-2"></script>
@@ -295,6 +296,39 @@
           border: var(--my-query-border-size, 10px) solid black;
         </code>
       </p>
+    </article>
+
+    <article>
+      <a class="anchor" id="atproperty" href="#atproperty">#</a><h2>Detect support of CSS @property (new in v1.1.0)</h2><br>
+      <p>
+        <b>--media-at-property-unsupported</b><br>
+      </p>
+      <div>
+        <style style="display: block; white-space: pre;" contenteditable="true">
+          .at-prop-demo .warning-at-property-unsupported {
+            --display-block-if-unsupported: var(--media-at-property-unsupported) block;
+            display: var(--display-block-if-unsupported, none); /* display: none if @property is supported */
+          }
+          .at-prop-demo .congrats-at-property-supported {
+            --display-none-if-unsupported: var(--media-at-property-unsupported) none;
+            display: var(--display-none-if-unsupported, block); /* display: block if @property is supported */
+          }
+          .at-prop-demo {
+            --at-prop-unsupported-color: var(--media-at-property-unsupported) red;
+            --at-prop-color: var(--at-prop-unsupported-color, green);
+            /* var(--at-prop-color) will return: */
+            /* red if @property is unsupported */
+            /* green if @property is supported */
+            color: var(--at-prop-color);
+          }
+        </style>
+        <b>.at-prop-demo:</b><br>
+        <div class="at-prop-demo">
+          Demonstration of @property support detection
+          <div class="warning-at-property-unsupported">This browser doesn't support @property yet :(</div>
+          <div class="congrats-at-property-supported">This browser DOES support @property :)</div>
+        </div>
+      </div>
     </article>
     <br>
     <br>

@@ -1,7 +1,7 @@
 /**
  * css-media-vars
  * BSD 2-Clause License
- * Copyright (c) James0x57, PropJockey, 2020
+ * Copyright (c) PropJockey, 2021
  */
 
 html {
@@ -37,6 +37,11 @@ html {
   --media-pointer-coarse: initial;
   --media-pointer-fine: initial;
   --media-pointer-none: initial;
+}
+@property --media-__atPropCatchSpace { syntax: "<integer>"; initial-value: 0; inherits: false; }
+html {
+  --media-__atPropCatchSpace: ;
+  --media-at-property-unsupported: var(--media-__atPropCatchSpace, );
 }
 @media print {
   html { --media-print: ; }
