@@ -126,9 +126,14 @@ Using css-media-vars to enhance this feature, you could transpile this
 into this
 
 ```html
-<hr style="--light: var(--media-prefers-light) #ff0000; --dark: var(--media-prefers-dark) #880000; border-color: var(--light, var(--dark, #cccccc));">
+<hr style="--light: var(--media-prefers-light) #ff0000; --dark: var(--media-prefers-dark) #880000;">
 ```
-with the same global CSS.
+and update the global CSS to this:
+```css
+hr {
+  border: 1px solid var(--light, var(--dark, #cccccc));;
+}
+```
 
 ---
 
